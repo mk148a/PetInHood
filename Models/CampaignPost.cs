@@ -9,7 +9,6 @@ namespace AnimalProtect.Models
     public class CampaignPost
     {
         public int id { get; set; }
-       
         public string[] photos { get; set; }
         public string creatorUsername { get; set; }
         public string photoOfcreator { get; set; }

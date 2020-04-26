@@ -84,7 +84,9 @@ namespace AnimalProtect.Models
            
            .HasColumnName("petCoin")
            .IsUnicode(false);
-                entity.Property(e => e.postIds)         
+                entity.Property(e => e.postIds)
+                    .HasConversion(v => string.Join(',', v),
+                        v => v.Split(',', StringSplitOptions.RemoveEmptyEntries))
          .HasColumnName("postIds")
          .IsUnicode(false);
                 entity.Property(e => e.profilePhoto)
