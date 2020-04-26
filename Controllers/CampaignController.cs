@@ -27,7 +27,7 @@ namespace AnimalProtect.Controllers
         //Get User campaign posts
         [Route("api/[controller]/getUserposts")]
         [HttpPost("getUserposts")]
-        public ActionResult<List<CampaignPost>> Post([FromBody] User user)
+        public ActionResult<IEnumerable<CampaignPost>> Post([FromBody] User user)
         {
             using (AnimalProjectDbContext _context = new AnimalProjectDbContext())
             {

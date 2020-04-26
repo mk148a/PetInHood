@@ -65,8 +65,7 @@ namespace AnimalProtect.Models
                    .HasMaxLength(50)
                    .IsUnicode(false);
                 entity.Property(e => e.badge)
-                  .IsRequired()
-                  .HasColumnName("badge")                  
+                    .HasColumnName("badge")                  
                   .IsUnicode(false);
                 entity.Property(e => e.firebaseToken)                
                   .HasColumnName("firebaseToken")
@@ -85,8 +84,7 @@ namespace AnimalProtect.Models
          .HasColumnName("postIds")
          .IsUnicode(false);
                 entity.Property(e => e.profilePhoto)
-  .IsRequired()
-  .HasColumnName("profilePhoto")
+                    .HasColumnName("profilePhoto")
   .IsUnicode(false);
             });
             modelBuilder.Entity<CampaignPost>(entity =>

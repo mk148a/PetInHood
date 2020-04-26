@@ -142,11 +142,22 @@ namespace AnimalProtect.Controllers
                 if (_context.Users.Any(a => a.username == value.username))
                 {
                     response.message = "Username is exist";
-                    User oldUser= _context.Users.Find(value.username);
-                    oldUser = value;
+                    var oldUser= _context.Users.SingleOrDefault(x=>x.username== value.username);
+                    oldUser.username = value.username;
+                    oldUser.badge = value.badge;
+                    oldUser.eMailAddress = value.eMailAddress;
+                    oldUser.firebaseToken = value.firebaseToken;
+                    oldUser.followers = value.followers;
+                    oldUser.following = value.following;
+                    oldUser.id = value.id;
+                    oldUser.mobileId = value.mobileId;
+                    oldUser.password = value.password;
+                    oldUser.petCoin = value.petCoin;
+                    oldUser.postIds = value.postIds;
+                    oldUser.profilePhoto = value.profilePhoto;
+
                     try
                     {
-
 
                         result = _context.SaveChanges();
                         if (result==1)
@@ -154,9 +165,9 @@ namespace AnimalProtect.Controllers
                             response.message = "Success";
                         }
                     }
-                    catch 
+                    catch (Exception e)
                     {
-                        response.message = "Error";
+                        response.message = "Error" +e.Message;
 
                     }
 
