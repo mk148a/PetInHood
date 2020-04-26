@@ -71,9 +71,13 @@ namespace AnimalProtect.Models
                   .HasColumnName("firebaseToken")
                   .IsUnicode(false);
                 entity.Property(e => e.followers)
+                    .HasConversion(v => string.Join(',', v),
+                        v => v.Split(',', StringSplitOptions.RemoveEmptyEntries))
                  .HasColumnName("followers")
                  .IsUnicode(false);
-                entity.Property(e => e.following)               
+                entity.Property(e => e.following)
+                    .HasConversion(v => string.Join(',', v),
+                        v => v.Split(',', StringSplitOptions.RemoveEmptyEntries))
                .HasColumnName("following")
                .IsUnicode(false);
                 entity.Property(e => e.petCoin)
@@ -127,16 +131,16 @@ namespace AnimalProtect.Models
                   .HasColumnName("offeredMoney")
                  ;
                 entity.Property(e => e.photoOfcreator)
-                .IsRequired()
-                .HasColumnName("photoOfcreator")
+                    .HasColumnName("photoOfcreator")
                ;
                 entity.Property(e => e.photos)
+                    .HasConversion(v => string.Join(',', v),
+                        v => v.Split(',', StringSplitOptions.RemoveEmptyEntries))
                  .IsUnicode(false)
                 .HasColumnName("photos")
                 ;
                 entity.Property(e => e.tag)
-                
-                .HasMaxLength(50)
+                    .HasMaxLength(50)
                 .HasColumnName("tag")
                ;
                 entity.Property(e => e.location)

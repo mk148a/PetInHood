@@ -60,7 +60,7 @@ namespace AnimalProtect.Controllers
                 {
                     int result = 0;
                     //username ,mail address and mobileId exist control
-                    if (JsonConvert.DeserializeObject <List<string>>(value.photos).Count < 1)
+                    if (value.photos.Length < 1)
                     {
                         response.message = "Add at least 1 photo";
                     }
@@ -83,7 +83,7 @@ namespace AnimalProtect.Controllers
                                 try
                                 {
                                     int maxid = 0;
-                                    if (_context.CommentPosts.Count() > 0)
+                                    if (_context.CampaignPosts.Count() > 0)
                                     {
                                         maxid = _context.CampaignPosts.OrderByDescending(a => a.id).FirstOrDefault().id;
                                     }
