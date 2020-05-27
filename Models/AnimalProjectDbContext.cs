@@ -20,6 +20,8 @@ namespace AnimalProtect.Models
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<CampaignPost> CampaignPosts { get; set; }
         public virtual DbSet<CommentPost> CommentPosts { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -185,6 +187,23 @@ namespace AnimalProtect.Models
                    .IsRequired()
                    .HasColumnName("mentionedId")
                   ;     
+            });
+            modelBuilder.Entity<Image>(entity =>
+            {
+                entity.HasKey(e => e.id);
+                entity.Property(e => e.id)
+                    .IsRequired()
+                    .HasColumnName("Id")
+                    ;
+
+                entity.ToTable("Images");
+
+                entity.Property(e => e.path)
+                    .HasColumnName("Path")
+                    ;
+                entity.Property(e => e.sha)
+                    .HasColumnName("Sha")
+                    ;
             });
         }
     }
